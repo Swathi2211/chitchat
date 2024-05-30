@@ -1,24 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import Main from './components/main';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SliderSizes from './components/testing';
+import LeftMenu from './components/leftMenu';
+import { useState } from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import { lightTheme, darkTheme } from './components/theme';
+
 
 function App() {
+
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        
+        <BrowserRouter>
+
+          <Routes>
+            <Route path="/" element={<Main colChangeFunc={toggleTheme} themeMode={theme} />}></Route>
+          </Routes>
+
+        </BrowserRouter>
+        {/* Other components */}
+      </ThemeProvider>
+
+
+    </>
   );
 }
 

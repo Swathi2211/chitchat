@@ -1,0 +1,25 @@
+#chat{
+    padding: 30px;
+    font-size: 20px;
+    font-weight: bolder;
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#circle{
+    padding: 5px;
+    margin-top: -2px;
+}
+
+#circle:hover{
+
+    border-radius: 100%;
+    background-color: rgba(202, 202, 202, 0.281);
+    
+}
+
+
+
+
+
